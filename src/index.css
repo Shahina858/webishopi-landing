@@ -1,0 +1,35 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --teal: #14b8a6;
+  --teal-h: #0d9488;
+  --teal-dim: rgba(20,184,166,0.08);
+  --teal-b: rgba(20,184,166,0.25);
+  --bg: #ffffff;
+  --bg2: #f8fffe;
+  --bg3: #f0fdfb;
+  --card: #ffffff;
+  --bdr: rgba(20,184,166,0.18);
+  --bdr2: rgba(20,184,166,0.1);
+  --txt: #0f172a;
+  --txt2: #1e4d47;
+  --txt3: #64748b;
+  --sora: 'Sora', sans-serif;
+  --inter: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { background: #fff; color: #0f172a; font-family: var(--inter); line-height: 1.6; overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ANIMATIONS */
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.75)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+.fade-up { animation: fadeUp 0.7s ease forwards; }
+.fade-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.2s ease both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.35s ease both; }
+.fade-up-4 { animation: fadeUp 0.7s 0.5s ease both; }
