@@ -11,8 +11,16 @@ export default function CTA() {
           <a href="https://webishopi.com" style={s.btnP}>Start Free Trial →</a>
           <a href="mailto:sales@techbee.ae" style={s.btnS}>Talk to Sales</a>
         </div>
-        <p style={s.note}>Powered by TechBee IT &amp; Designs LLC · Dubai, UAE · <a href="mailto:sales@techbee.ae" style={{color:'#14b8a6',textDecoration:'none'}}>sales@techbee.ae</a></p>
-      </div>
+<p style={s.note}>
+  Powered by{' '}
+  <a href="https://techbee.ae" target="_blank" rel="noopener noreferrer" style={{color:'#14b8a6',textDecoration:'none'}}>
+    techbee.ae
+  </a>
+  {' '}· Dubai, UAE ·{' '}
+  <a href="mailto:sales@techbee.ae" style={{color:'#14b8a6',textDecoration:'none'}}>
+    sales@techbee.ae
+  </a>
+</p>      </div>
     </section>
   )
 }
