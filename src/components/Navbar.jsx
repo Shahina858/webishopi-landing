@@ -203,7 +203,7 @@ export default function Navbar() {
 
               {/* RIGHT: Talk to sales + Get a Demo + Mobile toggle */}
               <div className="nav-right">
-                <a href="#contact" className="nav-talk">Talk to sales</a>
+                <a href="#contact" className="nav-talk">TALK TO SALES</a>
                 <a href="#demo" className="nav-demo">Get a Demo →</a>
                 <button
                   className="nav-hamburger"
@@ -226,7 +226,7 @@ export default function Navbar() {
           {links.map(l => (
             <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
           ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Talk to sales</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>TALK TO SALES</a>
           <a href="#demo" onClick={() => setMenuOpen(false)}>Get a Demo →</a>
         </div>
       </header>
