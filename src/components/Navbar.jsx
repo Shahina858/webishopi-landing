@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { LANGUAGES } from '../translations'
 import logo from "./Images/webishopi_logo.png";
 
@@ -6,15 +7,20 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const langRef = useRef(null)
+  const location = useLocation()
   const n = t.nav
   const isRTL = selectedLang.dir === 'rtl'
+  const isHome = location.pathname === '/'
+
+  // Anchor links only work on the home page; on /about they go home first
+  const anchorHref = (hash) => isHome ? hash : `/${hash}`
 
   const links = [
-    { key: 'features',   href: '#features' },
-    { key: 'howItWorks', href: '#how' },
-    { key: 'flows',      href: '#flows' },
-    { key: 'pricing',    href: '#pricing' },
-    { key: 'faq',        href: '#faq' },
+    { key: 'features',   href: anchorHref('#features') },
+    { key: 'howItWorks', href: anchorHref('#how') },
+    { key: 'flows',      href: anchorHref('#flows') },
+    { key: 'pricing',    href: anchorHref('#pricing') },
+    { key: 'faq',        href: anchorHref('#faq') },
   ]
 
   useEffect(() => {
@@ -37,6 +43,10 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
         .nav-links{display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;}
         .nav-links a{color:#fff;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 12px;border-radius:8px;transition:background 0.2s;white-space:nowrap;}
         .nav-links a:hover{background:rgba(255,255,255,0.2);}
+        .nav-links a.active-route{background:rgba(255,255,255,0.25);}
+        .nav-about{color:#fff;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 12px;border-radius:8px;transition:background 0.2s;white-space:nowrap;}
+        .nav-about:hover{background:rgba(255,255,255,0.2);}
+        .nav-about.active-route{background:rgba(255,255,255,0.25);}
         .nav-talk{color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;text-decoration:none;padding:8px 12px;border-radius:8px;white-space:nowrap;transition:background 0.2s;}
         .nav-talk:hover{background:rgba(255,255,255,0.15);}
         .nav-demo{display:inline-flex;align-items:center;gap:6px;background:#0d9488;color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;text-decoration:none;padding:10px 22px;border-radius:8px;white-space:nowrap;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;box-shadow:0 2px 10px rgb(5,45,42);}
@@ -74,13 +84,27 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
       <header>
         <nav className="nav-wrap" style={{direction: isRTL ? 'rtl' : 'ltr'}}>
           <div className="nav-inner">
-            <a href="#" className="nav-logo"><img src={logo} alt="Webishopi" /></a>
+            <Link to="/" className="nav-logo"><img src={logo} alt="Webishopi" /></Link>
             <div className="nav-right-all">
               <ul className="nav-links">
-                {links.map(l => <li key={l.key}><a href={l.href}>{n[l.key]}</a></li>)}
+                {links.map(l => (
+                  <li key={l.key}>
+                    <a href={l.href}>{n[l.key]}</a>
+                  </li>
+                ))}
+                {/* About uses React Router Link for client-side navigation */}
+                <li>
+                  <Link
+                    to="/about"
+                    className={`nav-about ${location.pathname === '/about' ? 'active-route' : ''}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    {n.about}
+                  </Link>
+                </li>
               </ul>
               <div className="nav-right">
-                <a href="#contact" className="nav-talk">{n.talkToSales}</a>
+                <a href={isHome ? '#contact' : '/#contact'} className="nav-talk">{n.talkToSales}</a>
                 <div className="lang-switcher" ref={langRef}>
                   <button className="lang-trigger" onClick={() => setLangOpen(o => !o)} aria-label="Switch language">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -101,7 +125,7 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
                     </div>
                   )}
                 </div>
-                <a href="#demo" className="nav-demo">{n.getDemo}</a>
+                <a href={isHome ? '#demo' : '/#demo'} className="nav-demo">{n.getDemo}</a>
                 <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
                   <span style={menuOpen ? {transform:'rotate(45deg) translate(5px,5px)'} : {}}/>
                   <span style={menuOpen ? {opacity:0} : {}}/>
@@ -111,10 +135,17 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
             </div>
           </div>
         </nav>
+
+        {/* Mobile menu */}
         <div className={`nav-mobile ${menuOpen ? 'open' : ''}`} style={{direction: isRTL ? 'rtl' : 'ltr'}}>
-          {links.map(l => <a key={l.key} href={l.href} onClick={() => setMenuOpen(false)}>{n[l.key]}</a>)}
-          <a href="#contact" onClick={() => setMenuOpen(false)}>{n.talkToSales}</a>
-          <a href="#demo" onClick={() => setMenuOpen(false)}>{n.getDemo}</a>
+          {links.map(l => (
+            <a key={l.key} href={l.href} onClick={() => setMenuOpen(false)}>{n[l.key]}</a>
+          ))}
+          <Link to="/about" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0) }} style={{color:'#fff',textDecoration:'none',fontFamily:"'Inter',sans-serif",fontSize:'13px',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',padding:'10px 12px',borderRadius:'8px'}}>
+            {n.about}
+          </Link>
+          <a href={isHome ? '#contact' : '/#contact'} onClick={() => setMenuOpen(false)}>{n.talkToSales}</a>
+          <a href={isHome ? '#demo' : '/#demo'} onClick={() => setMenuOpen(false)}>{n.getDemo}</a>
           <div className="nav-mobile-lang">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             <select value={selectedLang.code} onChange={e => { const lang = LANGUAGES.find(l => l.code === e.target.value); if(lang) onLangChange(lang) }}>

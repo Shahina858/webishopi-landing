@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { LANGUAGES, getTranslation } from './translations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -13,6 +14,7 @@ import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import About from './components/About'
 
 export default function App() {
   const [selectedLang, setSelectedLang] = useState(LANGUAGES[1]) // default English
@@ -28,19 +30,33 @@ export default function App() {
   return (
     <>
       <Navbar t={t} selectedLang={selectedLang} onLangChange={handleLangChange} />
-      <main>
-        <Hero t={t} />
-        <Industries t={t} />
-        <ProductMock t={t} />
-        <Features t={t} />
-        <HowItWorks t={t} />
-        <StatsBar t={t} />
-        <AIAgent t={t} />
-        <Flows t={t} />
-        <Pricing t={t} />
-        <FAQ t={t} />
-        <CTA t={t} />
-      </main>
+      <Routes>
+
+        {/* ── Home page ── */}
+        <Route path="/" element={
+          <main>
+            <Hero t={t} />
+            <Industries t={t} />
+            <ProductMock t={t} />
+            <Features t={t} />
+            <HowItWorks t={t} />
+            <StatsBar t={t} />
+            <AIAgent t={t} />
+            <Flows t={t} />
+            <Pricing t={t} />
+            <FAQ t={t} />
+            <CTA t={t} />
+          </main>
+        } />
+
+        {/* ── About page ── */}
+        <Route path="/about" element={
+          <main>
+            <About t={t} />
+          </main>
+        } />
+
+      </Routes>
       <Footer t={t} />
     </>
   )
