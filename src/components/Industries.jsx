@@ -1,39 +1,34 @@
-const industries = [
-  { label: 'IT & Technology Resellers', icon: <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/> },
-  { label: 'Building Material Suppliers', icon: <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></> },
-  { label: 'Furniture Suppliers', icon: <><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></> },
-  { label: 'Medical Equipment Suppliers', icon: <path d="M22 12h-4l-3 9L9 3l-3 9H2"/> },
-  { label: 'Industrial Equipment Suppliers', icon: <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></> },
-  { label: 'Office Equipment Suppliers', icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></> },
-  { label: 'Wholesale & Distribution', icon: <><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></> },
-  { label: 'Electrical & Hardware Suppliers', icon: <><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></> },
-  { label: 'Safety & Security Equipment', icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/> },
+const INDUSTRY_ICONS = [
+  <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>,
+  <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>,
+  <><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></>,
+  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>,
+  <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></>,
+  <><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>,
+  <><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></>,
+  <><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></>,
+  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
 ]
 
-export default function Industries() {
+export default function Industries({ t }) {
+  const ind = t.industries
   return (
     <section style={s.wrap}>
       <div style={s.inner}>
-        <p style={s.label}>Built for every product-based business</p>
-        <p style={s.desc}>
-          Any business that sells physical products and quotes customers manually can run smarter with Webishopi — from single-branch resellers to multi-location distributors across the GCC.
-        </p>
+        <p style={s.label}>{ind.label}</p>
+        <p style={s.desc}>{ind.desc}</p>
         <div style={s.grid}>
-          {industries.map(({ label, icon }) => (
-            <div key={label} style={s.pill} className="ind-pill">
+          {ind.items.map((label, i) => (
+            <div key={i} style={s.pill} className="ind-pill">
               <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
-                {icon}
+                {INDUSTRY_ICONS[i]}
               </svg>
               <span style={s.pillTxt}>{label}</span>
             </div>
           ))}
         </div>
       </div>
-      <style>{`
-        .ind-pill { transition: all .2s; cursor: default; }
-        .ind-pill:hover { border-color: #14b8a6 !important; background: rgba(20,184,166,0.08) !important; box-shadow: 0 4px 16px rgba(20,184,166,.1); }
-        .ind-pill:hover span { color: #14b8a6 !important; }
-      `}</style>
+      <style>{".ind-pill{transition:all .2s;cursor:default}.ind-pill:hover{border-color:#14b8a6!important;background:rgba(20,184,166,0.08)!important;box-shadow:0 4px 16px rgba(20,184,166,.1)}.ind-pill:hover span{color:#14b8a6!important}"}</style>
     </section>
   )
 }

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { LANGUAGES, getTranslation } from './translations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Industries from './components/Industries'
@@ -13,23 +15,33 @@ import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [selectedLang, setSelectedLang] = useState(LANGUAGES[1]) // default English
+
+  const handleLangChange = (lang) => {
+    setSelectedLang(lang)
+    document.documentElement.lang = lang.code
+    document.documentElement.dir = lang.dir
+  }
+
+  const t = getTranslation(selectedLang.code)
+
   return (
     <>
-      <Navbar />
+      <Navbar t={t} selectedLang={selectedLang} onLangChange={handleLangChange} />
       <main>
-        <Hero />
-        <Industries />
-        <ProductMock />
-        <Features />
-        <HowItWorks />
-        <StatsBar />
-        <AIAgent />
-        <Flows />
-        <Pricing />
-        <FAQ />
-        <CTA />
+        <Hero t={t} />
+        <Industries t={t} />
+        <ProductMock t={t} />
+        <Features t={t} />
+        <HowItWorks t={t} />
+        <StatsBar t={t} />
+        <AIAgent t={t} />
+        <Flows t={t} />
+        <Pricing t={t} />
+        <FAQ t={t} />
+        <CTA t={t} />
       </main>
-      <Footer />
+      <Footer t={t} />
     </>
   )
 }
