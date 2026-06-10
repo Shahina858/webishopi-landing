@@ -22,19 +22,23 @@ export default function App() {
   const handleLangChange = (lang) => {
     setSelectedLang(lang)
     document.documentElement.lang = lang.code
-    document.documentElement.dir = lang.dir
+    // ✖ do NOT set document.documentElement.dir — that flips the navbar too
   }
 
   const t = getTranslation(selectedLang.code)
+  const isRTL = selectedLang.dir === 'rtl'
+  const contentDir = { direction: isRTL ? 'rtl' : 'ltr' }
 
   return (
     <>
+      {/* Navbar always LTR layout — only text changes */}
       <Navbar t={t} selectedLang={selectedLang} onLangChange={handleLangChange} />
+
       <Routes>
 
         {/* ── Home page ── */}
         <Route path="/" element={
-          <main>
+          <main style={contentDir}>
             <Hero t={t} />
             <Industries t={t} />
             <ProductMock t={t} />
@@ -51,13 +55,16 @@ export default function App() {
 
         {/* ── About page ── */}
         <Route path="/about" element={
-          <main>
+          <main style={contentDir}>
             <About t={t} />
           </main>
         } />
 
       </Routes>
-      <Footer t={t} />
+
+      <div style={contentDir}>
+        <Footer t={t} />
+      </div>
     </>
   )
 }
