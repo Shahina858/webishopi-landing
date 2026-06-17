@@ -122,7 +122,7 @@ export const TRANSLATIONS = {
       note: 'All prices in AED, exclusive of VAT. Setup is one-time. Need something custom?',
       noteLink: 'Talk to our team →',
       plans: [
-        { name:'Starter',      sub:'Up to 100 products',   price:'AED 499',   per:'/mo', annual:'AED 4,790 / yr · AED 1,500 setup',  features:['Catalogue management','AI product search','Instant PDF quotations','Email delivery & CC routing','Customer portal','Up to 3 users'], pop:false },
+        { name:'Starter',      sub:'Up to 100 products',   price:'Free',      per:'6 months', badge:'6 Months Free Trial', annual:'Then AED 4,790 / yr · AED 1,500 setup', features:['Catalogue management','AI product search','Instant PDF quotations','Email delivery & CC routing','Customer portal','Up to 3 users'], pop:false },
         { name:'Professional', sub:'Up to 500 products',   price:'AED 1,299', per:'/mo', annual:'AED 12,470 / yr · AED 3,500 setup', features:['Everything in Starter','BOQ upload & AI matching','RFQ management','Autonomous email agent','Quote history & tracking','Up to 10 users'], pop:true },
         { name:'Business',     sub:'Up to 2,000 products', price:'AED 2,499', per:'/mo', annual:'AED 23,990 / yr · AED 7,500 setup', features:['Everything in Professional','Multi-exec approval flows','Customer-specific pricing','Campaign reply automation','New customer approval flow','Up to 25 users'], pop:false },
         { name:'Enterprise',   sub:'Unlimited products',   price:'Custom',    per:'',    annual:'Tailored · From AED 15,000 setup',  features:['Unlimited products & users','Multi-company & multi-branch','ERP / SAP / Oracle integration','SSO & advanced security','Dedicated account manager','SLA-backed support'], pop:false, ent:true },
@@ -351,7 +351,7 @@ export const TRANSLATIONS = {
       note: 'جميع الأسعار بالدرهم الإماراتي، لا تشمل ضريبة القيمة المضافة. الإعداد لمرة واحدة. هل تحتاج شيئاً مخصصاً؟',
       noteLink: 'تحدث مع فريقنا →',
       plans: [
-        { name:'مبتدئ',   sub:'حتى 100 منتج',       price:'499 د.إ',   per:'/شهر', annual:'4,790 د.إ / سنة · 1,500 د.إ إعداد',  features:['إدارة الكتالوج','بحث ذكي عن المنتجات','عروض أسعار PDF فورية','توصيل البريد ونسخ CC','بوابة العملاء','حتى 3 مستخدمين'], pop:false },
+        { name:'مبتدئ',   sub:'حتى 100 منتج',       price:'مجاناً',    per:'6 أشهر', badge:'تجربة مجانية 6 أشهر', annual:'ثم 4,790 د.إ / سنة · 1,500 د.إ إعداد', features:['إدارة الكتالوج','بحث ذكي عن المنتجات','عروض أسعار PDF فورية','توصيل البريد ونسخ CC','بوابة العملاء','حتى 3 مستخدمين'], pop:false },
         { name:'احترافي', sub:'حتى 500 منتج',       price:'1,299 د.إ', per:'/شهر', annual:'12,470 د.إ / سنة · 3,500 د.إ إعداد', features:['كل ما في المبتدئ','رفع BOQ ومطابقة الذكاء الاصطناعي','إدارة RFQ','وكيل بريد إلكتروني مستقل','سجل العروض والتتبع','حتى 10 مستخدمين'], pop:true },
         { name:'أعمال',   sub:'حتى 2,000 منتج',     price:'2,499 د.إ', per:'/شهر', annual:'23,990 د.إ / سنة · 7,500 د.إ إعداد', features:['كل ما في الاحترافي','تدفقات موافقة متعددة','أسعار خاصة بالعميل','أتمتة الردود الترويجية','تدفق موافقة العميل الجديد','حتى 25 مستخدماً'], pop:false },
         { name:'مؤسسي',   sub:'منتجات غير محدودة', price:'مخصص',      per:'',      annual:'مُصمَّم خصيصاً · من 15,000 د.إ إعداد', features:['منتجات ومستخدمون غير محدودون','متعدد الشركات والفروع','تكامل ERP / SAP / Oracle','SSO وأمان متقدم','مدير حساب مخصص','دعم مضمون بـ SLA'], pop:false, ent:true },
