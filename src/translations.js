@@ -10,7 +10,7 @@ export const TRANSLATIONS = {
       pricing: 'Pricing', faq: 'FAQ', about: 'About', talkToSales: 'Talk to Sales', getDemo: 'Get a Demo →',
     },
     hero: {
-      badge: 'AI-Powered Quotation Platform · 24/7 Sales Agent',
+      badge: 'AI-Powered Quotation Platform · 24/7 AI Sales Agent',
       line1: 'Stop quoting manually.',
       line2: 'Every quote. Automated.',
       sub: 'Webishopi gives any product-based business an intelligent procurement portal that saves time and boosts sales — instant PDF quotations, AI-driven BOQ matching, and autonomous 24/7 email handling, all out of the box.',
@@ -353,7 +353,7 @@ export const TRANSLATIONS = {
       pricing: 'الأسعار', faq: 'الأسئلة الشائعة', about: 'من نحن', talkToSales: 'تحدث مع المبيعات', getDemo: 'احصل على عرض ←',
     },
     hero: {
-      badge: 'منصة عروض الأسعار المدعومة بالذكاء الاصطناعي · مندوب مبيعات 24/7',
+badge: 'منصة عروض الأسعار بالذكاء الاصطناعي · وكيل مبيعات ذكي 24/7',
       line1: 'توقف عن التسعير اليدوي.',
       line2: 'كل عرض. مؤتمت.',
       sub: 'تمنح ويبيشوبي أي شركة قائمة على المنتجات بوابة مشتريات ذكية توفر الوقت وتعزز المبيعات — عروض أسعار PDF فورية، ومطابقة BOQ بالذكاء الاصطناعي، ومعالجة بريد إلكتروني مستقلة على مدار الساعة طوال أيام الأسبوع.',
