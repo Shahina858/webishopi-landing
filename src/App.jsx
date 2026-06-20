@@ -15,6 +15,7 @@ import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import About from './components/About'
+import Contact from './components/Contact'
 
 export default function App() {
   const [selectedLang, setSelectedLang] = useState(LANGUAGES[1]) // default English
@@ -57,6 +58,18 @@ export default function App() {
         <Route path="/about" element={
           <main style={contentDir}>
             <About t={t} />
+          </main>
+        } />
+
+        {/* ── Contact / Demo page ── */}
+        <Route path="/contact" element={
+          <main style={contentDir}>
+            <Contact t={t} />
+          </main>
+        } />
+        <Route path="/demo" element={
+          <main style={contentDir}>
+            <Contact t={t} />
           </main>
         } />
 

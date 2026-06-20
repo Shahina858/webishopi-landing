@@ -118,7 +118,7 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
                 </li>
               </ul>
               <div className="nav-right">
-                <a href="#contact" onClick={goHomeHash('#contact')} className="nav-talk">{n.talkToSales}</a>
+                <a href="/contact" className="nav-talk">{n.talkToSales}</a>
                 <div className="lang-switcher" ref={langRef}>
                   <button className="lang-trigger" onClick={() => setLangOpen(o => !o)} aria-label="Switch language">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -139,7 +139,7 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
                     </div>
                   )}
                 </div>
-                <a href="#demo" onClick={goHomeHash('#demo')} className="nav-demo">{n.getDemo}</a>
+                <a href="/contact" className="nav-demo">{n.getDemo}</a>
                 <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
                   <span style={menuOpen ? {transform:'rotate(45deg) translate(5px,5px)'} : {}}/>
                   <span style={menuOpen ? {opacity:0} : {}}/>
@@ -158,8 +158,8 @@ export default function Navbar({ t, selectedLang, onLangChange }) {
           <Link to="/about" onClick={() => { setMenuOpen(false); window.scrollTo(0, 0) }} style={{color:'#fff',textDecoration:'none',fontFamily:"'Inter',sans-serif",fontSize:'13px',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',padding:'10px 12px',borderRadius:'8px'}}>
             {n.about}
           </Link>
-          <a href="#contact" onClick={(e) => { setMenuOpen(false); goHomeHash('#contact')(e) }}>{n.talkToSales}</a>
-          <a href="#demo" onClick={(e) => { setMenuOpen(false); goHomeHash('#demo')(e) }}>{n.getDemo}</a>
+          <a href="/contact" onClick={() => setMenuOpen(false)}>{n.talkToSales}</a>
+          <a href="/contact" onClick={() => setMenuOpen(false)}>{n.getDemo}</a>
           <div className="nav-mobile-lang">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             <select value={selectedLang.code} onChange={e => { const lang = LANGUAGES.find(l => l.code === e.target.value); if(lang) onLangChange(lang) }}>

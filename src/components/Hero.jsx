@@ -98,10 +98,11 @@ export default function Hero({ t }) {
         </h1>
         <p style={{...s.sub,...(mounted?s.fadeIn3:s.fadeOut)}}>{h.sub}</p>
         <div style={{...s.btns,...(mounted?s.fadeIn4:s.fadeOut)}}>
-          <a href="https://webishopi.com" style={btnPhover?{...s.btnP,...s.btnPh}:s.btnP} onMouseEnter={()=>setBtnPhover(true)} onMouseLeave={()=>setBtnPhover(false)}>
+          <a href="/contact" style={btnPhover?{...s.btnP,...s.btnPh}:s.btnP} onMouseEnter={()=>setBtnPhover(true)} onMouseLeave={()=>setBtnPhover(false)}>
             {h.btnPrimary} <span style={{display:'inline-block',transform:btnPhover?'translateX(5px)':'translateX(0)',transition:'transform .25s ease'}}>→</span>
           </a>
           <a href="#how" style={btnShover?{...s.btnS,...s.btnSh}:s.btnS} onMouseEnter={()=>setBtnShover(true)} onMouseLeave={()=>setBtnShover(false)}>{h.btnSecondary}</a>
+          <a href="https://shop.webishopi.com" target="_blank" rel="noopener noreferrer" style={s.btnStore}>Visit Store</a>
         </div>
         <div style={{...s.kpiBar,...(mounted?s.fadeIn5:s.fadeOut)}}>
           {kpis.map(([n, l], i) => (
@@ -158,7 +159,7 @@ const s = {
   btnPh:{background:'#0d9488',transform:'translateY(-2px)',boxShadow:'0 10px 32px rgba(20,184,166,.35)'},
   btnS:{background:'transparent',color:'#0f172a',padding:'14px 30px',borderRadius:8,fontSize:15,fontWeight:600,textDecoration:'none',border:'1.5px solid rgba(20,184,166,.4)',display:'inline-flex',alignItems:'center',gap:8,transition:'all .25s ease'},
   btnSh:{background:'rgba(20,184,166,.06)',borderColor:'#14b8a6',color:'#14b8a6',transform:'translateY(-2px)'},
-  kpiBar:{display:'flex',background:'rgba(255,255,255,0.92)',border:'1px solid rgba(20,184,166,0.2)',borderRadius:14,overflow:'hidden',boxShadow:'0 4px 24px rgba(20,184,166,.08)',backdropFilter:'blur(12px)'},
+btnStore:{background:'#14b8a6',color:'#fff',padding:'14px 30px',borderRadius:8,fontSize:15,fontWeight:700,textDecoration:'none',border:'none',display:'inline-flex',alignItems:'center',gap:8,transition:'all .25s ease',boxShadow:'0 4px 20px rgba(20,184,166,.2)'},  kpiBar:{display:'flex',background:'rgba(255,255,255,0.92)',border:'1px solid rgba(20,184,166,0.2)',borderRadius:14,overflow:'hidden',boxShadow:'0 4px 24px rgba(20,184,166,.08)',backdropFilter:'blur(12px)'},
   kpi:{padding:'20px 38px',textAlign:'center',borderRight:'1px solid rgba(20,184,166,0.15)',transition:'background .25s ease, transform .25s ease',cursor:'default'},
   kpiH:{background:'rgba(20,184,166,.05)',transform:'translateY(-2px)'},
   kn:{fontFamily:"'Sora',sans-serif",fontSize:26,fontWeight:700,color:'#0f172a',display:'block',letterSpacing:-.5},

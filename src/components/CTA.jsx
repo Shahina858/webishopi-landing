@@ -8,7 +8,7 @@ export default function CTA({ t }) {
         <h2 style={s.h2}>{c.h2}</h2>
         <p style={s.p}>{c.p}</p>
         <div style={s.btns}>
-          <a href="https://webishopi.com" style={s.btnP}>{c.btnPrimary}</a>
+          <a href="/contact" style={s.btnP}>{c.btnPrimary}</a>
           <a href="mailto:sales@techbee.ae" style={s.btnS}>{c.btnSecondary}</a>
         </div>
         <p style={s.note}>
